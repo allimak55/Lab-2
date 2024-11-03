@@ -36,7 +36,7 @@ public class Main {
         return cnt;
     }
     // Подпрограмма для вычисления результата логического выражения
-    public static boolean evaluateExpression(String array, int x) {
+    public static boolean evaluateArray(String array, int x) {
         String[] parts = array.split(" "); // Разделяем строку на части
         String oper = parts[1];             // Получаем оператор (например, ">", "<", "=")
         int num = Integer.parseInt(parts[2]); // Получаем правую часть выражения (число)
@@ -91,7 +91,7 @@ public class Main {
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
                 // Вычисляем результат для каждого выражения, выводим и сохраняем его
-                res[i][j] = evaluateExpression(array[i][j], K);
+                res[i][j] = evaluateArray(array[i][j], K);
                 out.print(res[i][j] + " ");
             }
             out.println();
