@@ -24,7 +24,7 @@ public class Main {
             }
         }
     }
-    // Подпрограмма для подсчета количества истинных значений в строке
+    // Подпрограмма для подсчета количества истинных выражений в строке
     public static int cntTrue(boolean[] row) {
         int cnt = 0;
         for (int i = 0; i < row.length; i++) {
