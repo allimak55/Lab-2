@@ -86,7 +86,7 @@ public class Main {
     public static Scanner in = new Scanner(System.in);
     public static PrintStream out = System.out;
     // Подпрограмма для сортировки массива по количеству истинных и ложных значений в строках
-    public static void sortRes(boolean[][] res) {
+    public static void sortRes(boolean[][] res, String [][] array) {
         int N = res.length;
         // Сортировка
         for (int i = 0; i < N - 1; i++) {
@@ -102,6 +102,9 @@ public class Main {
                     boolean[] temp = res[j];
                     res[j] = res[j + 1];
                     res[j + 1] = temp;
+                    String [] temp1 = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp1;
                 }
             }
         }
@@ -168,6 +171,12 @@ public class Main {
             for (int j = 0; j < M; j++)
                 array[i][j] = in.nextLine();
         int K = in.nextInt(); // Ввод значения переменной K
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                out.print(array[i][j] + " ");
+            }
+            out.println();
+        }
         // Создаем массив для хранения результатов вычислений
         boolean[][] res = new boolean[N][M];
         for (int i = 0; i < N; i++) {
@@ -179,11 +188,17 @@ public class Main {
             out.println();
         }
         // Сортировка строк по количеству истинных и ложных значений
-        sortRes(res);
+        sortRes(res, array);
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                out.print(array[i][j] + " ");
+            }
+            out.println();
+        }
         // Вывод отсортированного массива
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
-                if (res[i][j] == true)
+                if (res[i][j])
                     out.print("Истина ");
                 else
                     out.print("Ложь ");
@@ -216,12 +231,18 @@ public class Main {
 
     - **Output**:
         ```
-        true true
-        false false
-        true true
-        Истина Истина
-        Истина Истина
-        Ложь Ложь
+        x < 6 x > 3 
+        x = 4 x > 6 
+        x < 7 x = 5 
+        true true 
+        false false 
+        true true 
+        x < 6 x > 3 
+        x < 7 x = 5 
+        x = 4 x > 6 
+        Истина Истина 
+        Истина Истина 
+        Ложь Ложь 
         5
         ```
 
@@ -241,11 +262,15 @@ public class Main {
 
     - **Output**:
         ```
-        false false true
-        true true true
-        Истина Истина Истина
-        Ложь Ложь Истина
-        4 
+        x > 5 x < 3 x = 5 
+        x > 1 x < 10 x = 5 
+        false false true 
+        true true true 
+        x > 1 x < 10 x = 5 
+        x > 5 x < 3 x = 5 
+        Истина Истина Истина 
+        Ложь Ложь Истина 
+        4
         ```
 
 3. Тест на `N = 3`, `M = 2`, и логические выражения:
@@ -262,11 +287,16 @@ public class Main {
 
     - **Output**:
         ```
-        true true
-        false false
-        Истина Истина
-        Ложь Ложь
+        x > 2 x < 4 
+        x > 3 x = 2 
+        true true 
+        false false 
+        x > 2 x < 4 
+        x > 3 x = 2 
+        Истина Истина 
+        Ложь Ложь 
         3
+
         ```
 
 4. Тест на `N = 3`, `M = 1`, и логические выражения:
@@ -282,13 +312,19 @@ public class Main {
 
     - **Output**:
         ```
-        true
-        false
-        false
-        Истина
-        Ложь
-        Ложь
-        3 
+        x < 7 
+        x = 4 
+        x > 6 
+        true 
+        false 
+        false 
+        x < 7 
+        x = 4 
+        x > 6 
+        Истина 
+        Ложь 
+        Ложь 
+        3
         ```
 
 5. Тест на `N = 4`, `M = 3`, и логические выражения:
@@ -317,6 +353,10 @@ public class Main {
         true true false
         false false true
         false true true
+        x > 4 x < 6 x = 7 
+        x < 3 x = 5 x > 1 
+        x > 2 x < 5 x = 3 
+        x > 6 x = 4 x < 10 
         Истина Истина Ложь
         Ложь Истина Истина
         Истина Ложь Ложь
